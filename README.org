@@ -2,6 +2,6 @@
 #+subtitle: 
 #+created:  2025-11-29
 
-* Description
+# * Description
 My personal Advent of Code solutions.
 Currently planning to only do 2025 solutions currently.
