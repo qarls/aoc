@@ -32,7 +32,6 @@ fn count_zero(numbers: Vec<i64>) -> i64 {
         dial += x;
         match from_zero {
             // "/" is a non-euclidian division rounding towards 0
-            true if dial < 0 => count += (dial / DIAL_MAX).abs(),
             false if dial <= 0 => count += (dial / DIAL_MAX).abs() + 1,
             _ => count += (dial / DIAL_MAX).abs(),
         }
