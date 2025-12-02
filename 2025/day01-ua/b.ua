@@ -12,9 +12,9 @@ Parse ← ⍣(
 °□/⍚⊂⍚Parse  # parses rows of L55 to -55 unboxed
 \+⍜(⊡0|+50)  # adds initial 50
 
-(+⊃(⌵↘¯1◿100⊂50|(-⊃(⊂50↘¯1|∘))))
 # this gives us the next dial position relative
 # to the previous one
+(+⊃(⌵↘¯1◿100⊂50|(-⊃(⊂50↘¯1|∘))))
 
 # the actual count
 +⊃(
@@ -25,7 +25,4 @@ Parse ← ⍣(
   )
 )
 
-# (⌊⌵÷100)
-# 5094
-# ˜≡⊟
 /+
