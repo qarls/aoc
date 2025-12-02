@@ -15,25 +15,31 @@ Parse ← ⍣(
 
 # ⊂50⊂¯200⍜(⊏8|×0)↙25↘20 ## [50 ¯200 123 143 132 85 49 5 ¯1 33 ¯0 ¯51 ¯96 ¯103 ¯144 ¯122 ¯152 ¯108 ¯78 ¯93 ¯115 ¯72 ¯24 ¯41 ¯63 ¯28 ¯70]
 
+# ⊂0˜⊂100˜⊂150↙ 25
 ⊸(
   ⊂50       # needed to count first int
   ×⊙⌈°×÷100 # euclidian division
   ⌵(-⊃(↘1|↘¯1))
+  # Now we're at 6386 (answer: 6289)
+  # We're over due to counting counts i.e. from (actual, expected)
+  # [-299,-201] going to -200 (+1,+0)
+  # [101,199] going to 100.   (-1,+0)
+  # 100 going to [101,199].   (+1,+0)
+  # 200 going to [101,199].   (+0,+0)
+  # 100 going to [001,099].   (+0,+0)
   /+
 )
-# Now we're at 6386
-# We're over due to counting -200 as -2
 
-# ⊸(
-#   ⌈°×÷100
-# )
+⊙(
+  ⊂50 # needed to count first int
+  ↧⊃(
+    ↘1=⊃(×⊙⌈°×÷100|×⊙⌊°×÷100) # true 100n except 0 as 1
+  | ↧1↥0(-⊃(↘1|↘¯1)×⊙⌈°×÷100) # true if [200,300) -> [100,200)
+  )
+  /+
+)
 
-# just really bad, don't look at this
-# adds every time it passes zero
-# ⊸(⊂50 # concats 50
-#    ⌈÷100
-#    ⌵-⊃(↘1|↘¯1)
-#    /+)
+˜-
 
 # # adds every time it touches 0 from 1..100
 # ⊸dip(⊂50
