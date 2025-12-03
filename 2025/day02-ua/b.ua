@@ -6,7 +6,8 @@ R ← ▽⍜⇌\↥≠@\n.             # removes trailing newline
 P ← +⊃(⇡+1⋅∘|∘)⟜-∩⋕°$"_-_" # parses "21-321" to an 1-rank array of start to end, keeping in mind exclusive range
 
 # 02b helpers
-L ← △⊥10
+L ← △⊥10               # number of digits in a number
+M ← /+×˜ⁿ10⇡⊢⊸(△)˜↙⊥10 # M subpattern of N
 
 &fras"input" # input
 # &fras"sample.txt"
