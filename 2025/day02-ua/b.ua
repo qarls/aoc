@@ -1,25 +1,23 @@
-# uiua 0.18.0-dev.3 (git)
+# uiua 0.18.0-dev.3
 
 # 02b
-# Helper functions that determine if number is valid
-# takes input n number i.e. 2121212121 and 2 number
-Pattern ← |2 (˜↙⊥10) # subpattern as digit array
-Expected ← |2 ⌝⊥10°□/⍚⊂▽⊃(
-  ⊢˜÷△⊥10 # length of number / pattern
-| □Pattern)
-IsInvalid ← |2 =⟜Expected # forms the expected match if invalid
+R ← ▽⍜⇌\↥≠@\n⟜∘            # removes trailing newline
+P ← +⊃(⇡+1⋅∘|∘)⟜-∩⋕°$"_-_" # parses "21-321" to an 1-rank array of start to end, keeping in mind exclusive range
 
+# forms the expected match if invalid
+IsInvalid ← (=1⊢△◴↯⤚(⊂⊸(⊢˜÷)△)⊥10)
 # Gives us lengths to check through
-Lengths ← |1 ▽⊸(=0◿1˜÷)⟜(↘1⇡+1⌊÷2)⊢△⊥10
-
-Solve ← ↧1↥0/↥(˜≡IsInvalid⊸(Lengths)) # true if duplicated on itself
-R     ← ▽⍜⇌\↥≠@\n⟜∘                   # removes trailing newline
-P     ← +⊃(⇡+1⋅∘|∘)⟜-∩⋕°$"_-_"        # parses "21-321" to an 1-rank array of start to end, keeping in mind exclusive range
+Lengths ← |1 ▽⊸(=0◿1˜÷)⟜(+1⇡⌊÷2)⊢△⊥10
+# true if duplicated on itself
+Solve ← ↥0↧1/↥≡(IsInvalid)⟜(Lengths)
 
 &fras"input" # input
-# &fras"sample.txt"
-⊜□⊸≠@,R # parses lines to rows
-°□/⍚⊂⍚P # parses it into an array of 1 rank [11 12 ... 22 95 ...]
-# ⊸≡Solve
+⊜□⊸≠@,R      # parses lines to rows
+°□/⍚⊂⍚P      # parses it into an array of 1 rank unboxed
 ▽⊸≡Solve
 /+
+
+# In the middle of this, I realized it might've
+# been much much faster to use the dedup function
+#
+# Native went from 50s to 26s
